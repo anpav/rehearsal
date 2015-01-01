@@ -1,0 +1,9 @@
+{
+  "name": "rehearsal",
+  "version": "0.1.0",
+  "desctiption": "Applications, that helps musicians to find places for rehearsals",
+  "author": "Anton Pavlenko <anpav.spb@gmail.com>",
+  "dependencies": {
+    "express": "^4.10.6"
+  }
+}
