@@ -1,12 +1,12 @@
 #Intellij
 
-/.idea
+.idea
 *.iml
 
 #MacOS
 
-/.DS_Store
+.DS_Store
 
 #Node
 
-/node_modules
+node_modules
