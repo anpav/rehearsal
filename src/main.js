@@ -12,4 +12,16 @@
                 console.log('Error: ' + data);
             });
     });
+
+    studiosApp.controller('TabsController', function () {
+        this.tab = 0;
+
+        this.changeTab = function (tabNumber) {
+            this.tab = tabNumber;
+        };
+
+        this.isSelected = function (tabNumber) {
+            return this.tab === tabNumber;
+        };
+    });
 })();

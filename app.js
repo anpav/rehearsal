@@ -25,8 +25,8 @@ app.get('/api/studios', function (req, res) {
 });
 
 // routes
-app.get('*', function(req, res) {
-    res.sendFile(__dirname + '/src/index.html');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/src/main.html');
 });
 
 app.listen(8080);
