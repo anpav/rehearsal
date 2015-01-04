@@ -1,5 +1,6 @@
 var express = require('express'),
     mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
     app = express(),
     mongoURI = process.env.mongoURI,
     Studio;
@@ -7,6 +8,7 @@ var express = require('express'),
 //configuration
 mongoose.connect(mongoURI);
 app.use(express.static(__dirname + '/src'));
+app.use(bodyParser.json());
 
 // define model
 Studio = mongoose.model('Studio', {
@@ -20,6 +22,24 @@ app.get('/api/studios', function (req, res) {
             res.send(err);
         } else {
             res.json(studios);
+        }
+    });
+});
+
+app.post('/api/studios', function (req, res) {
+    Studio.create({
+        name: req.body.name
+    }, function (err) {
+        if(err) {
+            res.send(err);
+        } else {
+            Studio.find(function (err, studios) {
+                if(err) {
+                    res.send(err);
+                } else {
+                    res.json(studios);
+                }
+            });
         }
     });
 });

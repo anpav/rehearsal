@@ -4,6 +4,8 @@
     studiosApp.controller('StudiosController', function($http) {
         var self = this;
 
+        self.studios = [];
+
         $http.get('/api/studios')
             .success(function (data) {
                 self.studios = data;
@@ -11,17 +13,32 @@
             .error(function (data) {
                 console.log('Error: ' + data);
             });
+
+        self.newStudio = {};
+
+        self.addNewStudio = function () {
+            $http.post('/api/studios', self.newStudio)
+                .success(function (data) {
+                    self.studios = data;
+                })
+                .error(function (data) {
+                    console.log('Error: ' + data);
+                });
+            self.newStudio = {};
+        }
     });
 
     studiosApp.controller('TabsController', function () {
-        this.tab = 0;
+        var self = this;
 
-        this.changeTab = function (tabNumber) {
-            this.tab = tabNumber;
+        self.tab = 0;
+
+        self.changeTab = function (tabNumber) {
+            self.tab = tabNumber;
         };
 
-        this.isSelected = function (tabNumber) {
-            return this.tab === tabNumber;
+        self.isSelected = function (tabNumber) {
+            return self.tab === tabNumber;
         };
     });
 })();

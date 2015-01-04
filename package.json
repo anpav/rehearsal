@@ -4,6 +4,7 @@
   "desctiption": "Applications, that helps musicians to find places for rehearsals",
   "author": "Anton Pavlenko <anpav.spb@gmail.com>",
   "dependencies": {
+    "body-parser": "^1.10.1",
     "express": "^4.10.6",
     "mongoose": "^3.8.21"
   }
