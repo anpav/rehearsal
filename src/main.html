@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Rehearsal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
     <script src="main.js"></script>
 </head>
@@ -20,7 +21,7 @@
         <div ng-show="tabsCtrl.isSelected(0)">
             <ul>
                 <li ng-repeat="studio in studiosCtrl.studios">
-                    {{studio.name}}
+                    {{studio.name}} <a href ng-click="studiosCtrl.deleteStudio(studio._id)">Delete</a>
                 </li>
             </ul>
         </div>

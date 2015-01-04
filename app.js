@@ -44,6 +44,24 @@ app.post('/api/studios', function (req, res) {
     });
 });
 
+app.delete('/api/studios/:studio_id', function (req, res) {
+    Studio.remove({
+        _id: req.params.studio_id
+    }, function(err) {
+        if(err) {
+            res.send(err);
+        } else {
+            Studio.find(function (err, studios) {
+                if(err) {
+                    res.send(err);
+                } else {
+                    res.json(studios);
+                }
+            })
+        }
+    });
+});
+
 // routes
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/src/main.html');

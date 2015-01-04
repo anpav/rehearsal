@@ -25,7 +25,17 @@
                     console.log('Error: ' + data);
                 });
             self.newStudio = {};
-        }
+        };
+
+        self.deleteStudio = function(id) {
+            $http.delete('/api/studios/' + id)
+                .success(function (data) {
+                    self.studios = data;
+                })
+                .error(function (data) {
+                    console.log('Error: ' + data);
+                });
+        };
     });
 
     studiosApp.controller('TabsController', function () {
