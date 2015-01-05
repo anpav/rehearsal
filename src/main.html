@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <title>Rehearsal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
     <script src="main.js"></script>
 </head>
-<body ng-controller="StudiosController as studiosCtrl">
-    <p>Hello, this is <strong>Rehearsal</strong>.</p>
-
-    <div ng-controller="TabsController as tabsCtrl">
-        <div>
-            <ul>
-                <li><a href ng-click="tabsCtrl.changeTab(0)">List of studios</a></li>
-                <li><a href ng-click="tabsCtrl.changeTab(1)">Add new studio</a></li>
-            </ul>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Rehearsal</a>
+    </div>
+    <div class="container" ng-controller="StudiosController as studiosCtrl">
+        <div class="jumbotron">
+            <h1>Hello, this is <strong>Rehearsal</strong>.</h1>
         </div>
 
-        <div ng-show="tabsCtrl.isSelected(0)">
-            <ul>
-                <li ng-repeat="studio in studiosCtrl.studios">
-                    {{studio.name}} <a href ng-click="studiosCtrl.deleteStudio(studio._id)">Delete</a>
-                </li>
-            </ul>
-        </div>
+        <div ng-controller="TabsController as tabsCtrl">
+            <div>
+                <ul class="nav nav-pills">
+                    <li ng-class="{ 'active' : tabsCtrl.isSelected(0) }"><a href ng-click="tabsCtrl.changeTab(0)">List of studios</a></li>
+                    <li ng-class="{ 'active' : tabsCtrl.isSelected(1) }"><a href ng-click="tabsCtrl.changeTab(1)">Add new studio</a></li>
+                </ul>
+            </div>
 
-        <div ng-show="tabsCtrl.isSelected(1)">
-            <form name="addNewStudioForm" ng-submit="studiosCtrl.addNewStudio()">
-                <p>Add new rehearsal studio</p>
-                <input ng-model="studiosCtrl.newStudio.name"/>
-                <input type="submit" value="Add new studio"/>
-            </form>
+            <div class="list-group top-buffer" ng-show="tabsCtrl.isSelected(0)">
+                <div class="list-group-item" ng-repeat="studio in studiosCtrl.studios">
+                    {{studio.name}} <a href class="btn btn-danger btn-xs pull-right" ng-click="studiosCtrl.deleteStudio(studio._id)">Delete</a>
+                </div>
+            </div>
+
+            <div class="top-buffer" ng-show="tabsCtrl.isSelected(1)">
+                <form name="addNewStudioForm" ng-submit="studiosCtrl.addNewStudio()">
+                    <p>Add new rehearsal studio</p>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter name" ng-model="studiosCtrl.newStudio.name"/>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add new studio</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
