@@ -10,10 +10,23 @@ mongoose.connect(mongoURI);
 app.use(express.static(__dirname + '/src'));
 app.use(bodyParser.json());
 
-// define model
-Studio = mongoose.model('Studio', {
-    name: "string"
+//define Schema
+var studioSchema = mongoose.Schema({
+    name: String,
+    fullAddress: {
+        city: String,
+        district: String,
+        undergroundStation: String,
+        address: String
+    },
+    phones: String,
+    email: String,
+    website: String,
+    description: String
 });
+
+// define model
+Studio = mongoose.model('Studio', studioSchema);
 
 // API routes
 app.get('/api/studios', function (req, res) {
@@ -27,9 +40,7 @@ app.get('/api/studios', function (req, res) {
 });
 
 app.post('/api/studios', function (req, res) {
-    Studio.create({
-        name: req.body.name
-    }, function (err) {
+    Studio.create(req.body, function (err) {
         if(err) {
             res.send(err);
         } else {

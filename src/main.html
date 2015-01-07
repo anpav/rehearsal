@@ -27,7 +27,16 @@
 
             <div class="list-group top-buffer" ng-show="tabsCtrl.isSelected(0)">
                 <div class="list-group-item" ng-repeat="studio in studiosCtrl.studios">
-                    {{studio.name}} <a href class="btn btn-danger btn-xs pull-right" ng-click="studiosCtrl.deleteStudio(studio._id)">Delete</a>
+                    Name: {{studio.name}};
+                    City: {{studio.fullAddress.city}};
+                    District: {{studio.fullAddress.district}}
+                    Underground station: {{studio.fullAddress.undergroundStation}}
+                    Address: {{studio.fullAddress.address}}
+                    Phones: {{studio.phones}}
+                    Email: {{studio.email}}
+                    Web site: {{studio.website}}
+                    Description: {{studio.description}}
+                    <a href class="btn btn-danger btn-xs pull-right" ng-click="studiosCtrl.deleteStudio(studio._id)">Delete</a>
                 </div>
             </div>
 
@@ -37,7 +46,31 @@
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Enter name" ng-model="studiosCtrl.newStudio.name"/>
                     </div>
-                    <button type="submit" class="btn btn-success">Add new studio</button>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter city" ng-model="studiosCtrl.newStudio.fullAddress.city"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter district" ng-model="studiosCtrl.newStudio.fullAddress.district"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter undergroundStation" ng-model="studiosCtrl.newStudio.fullAddress.undergroundStation"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter address" ng-model="studiosCtrl.newStudio.fullAddress.address"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter phones" ng-model="studiosCtrl.newStudio.phones"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter email" ng-model="studiosCtrl.newStudio.email"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter website" ng-model="studiosCtrl.newStudio.website"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter description" ng-model="studiosCtrl.newStudio.description"/>
+                    </div>
+                    <button type="submit" class="btn btn-success" ng-click="tabsCtrl.changeTab(0)">Add new studio</button>
                 </form>
             </div>
         </div>
