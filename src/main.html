@@ -12,7 +12,18 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <a class="navbar-brand" href="/">Rehearsal</a>
+        <div class="container">
+            <a class="navbar-brand" href="/">Rehearsal</a>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="E-mail" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Log in</button>
+            </form>
+        </div>
     </div>
     <div class="container" ng-controller="StudiosController as studiosCtrl">
         <div class="jumbotron">
