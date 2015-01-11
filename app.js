@@ -1,6 +1,7 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
+    passport = require('passport'),
     app = express(),
     mongoURI = process.env.mongoURI,
     Studio;
