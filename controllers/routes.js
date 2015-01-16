@@ -47,6 +47,6 @@ module.exports = function (app) {
     });
 
     app.get('/', function (req, res) {
-        res.sendFile(require('path').resolve(__dirname + '/../views/main.html'));
+        res.render('index');
     });
 };
