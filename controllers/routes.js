@@ -49,4 +49,16 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.render('index');
     });
+
+    app.get('/sign-up', function (req, res) {
+        res.render('sign-up', { message: 'Sign up Message'});
+    });
+
+    app.get('/sign-in', function (req, res) {
+        res.render('sign-in', { message: 'Sign in Message'});
+    });
+
+    app.get('/main', function (req, res) {
+        res.sendFile(require('path').resolve(__dirname + '/../views/main.html'));
+    });
 };

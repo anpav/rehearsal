@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+   head
+      title Rehearsal
+      meta(name='charset', content='UTF-8')
+      link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+      link(rel='stylesheet', href='./css/main.css')
+      script(src='http://code.jquery.com/jquery-2.1.3.min.js')
+      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+      script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js')
+   body
+      div(class='navbar navbar-inverse navbar-fixed-top')
+         div(class='container')
+            a(href='/', class='navbar-brand') Rehearsal
+            div(class='navbar-right')
+               a(href='/sign-in', class='btn navbar-top-buffer') Sign in
+               a(href='/sign-up', class='btn btn-success navbar-top-buffer') Create free account
+
+      block content
