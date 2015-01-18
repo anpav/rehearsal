@@ -3,10 +3,15 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || '8080';
+var sessionSecret = process.env.SECRET || 'secret';
 var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var configDB = require('./config/database.js');
 
@@ -14,17 +19,27 @@ var configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url);
 
+require('./config/passport.js')(passport);
+
 // express application configuration
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(bodyParser());
 
 app.set('view engine', 'jade');
 
+// required for passport
+
+app.use(session({ secret: sessionSecret }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 // routes
 
-require('./controllers/routes.js')(app);
+require('./controllers/routes.js')(app, passport);
 
 // launch
 

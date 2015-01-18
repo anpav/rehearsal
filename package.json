@@ -4,8 +4,12 @@
   "desctiption": "Applications, that helps musicians to find places for rehearsals",
   "author": "Anton Pavlenko <anpav.spb@gmail.com>",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.10.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.3",
     "express": "^4.10.6",
+    "express-session": "^1.10.1",
     "jade": "^1.9.0",
     "mongoose": "^3.8.21",
     "morgan": "^1.5.1",
