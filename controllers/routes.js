@@ -46,12 +46,29 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.get('/', function (req, res) {
-        res.render('index');
+    app.get('/main', isLoggedIn, function (req, res) {
+        res.sendFile(require('path').resolve(__dirname + '/../views/main.html'));
+    });
+
+    app.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+    app.get('/api/messages', function (req, res) {
+        res.json(req.flash());
+    });
+
+    app.get('/sign-in', function (req, res) {
+        res.sendFile(require('path').resolve(__dirname + '/../views/sign-in.html'));
     });
 
     app.get('/sign-up', function (req, res) {
-        res.render('sign-up', { message: req.flash('signupMessage') });
+        res.sendFile(require('path').resolve(__dirname + '/../views/sign-up.html'));
+    });
+
+    app.get('/', function (req, res) {
+        res.sendFile(require('path').resolve(__dirname + '/../views/index.html'));
     });
 
     app.post('/sign-up', passport.authenticate('local-signup', {
@@ -60,24 +77,11 @@ module.exports = function (app, passport) {
         failureFlash: true
     }));
 
-    app.get('/sign-in', function (req, res) {
-        res.render('sign-in', { message: req.flash('signinMessage')});
-    });
-
     app.post('/sign-in', passport.authenticate('local-signin', {
         successRedirect: '/main',
         failureRedirect: '/sign-in',
         failureFlash: true
     }));
-
-    app.get('/logout', function (req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
-    app.get('/main', isLoggedIn, function (req, res) {
-        res.sendFile(require('path').resolve(__dirname + '/../views/main.html'));
-    });
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated()) {

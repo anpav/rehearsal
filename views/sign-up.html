@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="authenticationApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Rehearsal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-route.min.js"></script>
+    <script src="./js/authentication.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Rehearsal</a>
+        <div class="navbar-right">
+            <a href="/sign-in" class="btn navbar-top-buffer">Sign in</a>
+            <a href="/sign-up" class="btn btn-success navbar-top-buffer">Create free account</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Sign up</h1>
+        <div ng-controller="AuthenticationController as authCtrl">
+            <div ng-show="authCtrl.signupMessage !== null" class="alert alert-danger">
+                {{authCtrl.signupMessage}}
+            </div>
+        </div>
+        <form action="/sign-up" method="post">
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" name="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="password" name="password">
+            </div>
+            <button class="btn btn-warning btn-lg" type="submit">Sign up</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
