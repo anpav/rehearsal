@@ -14,7 +14,7 @@
                 if (data.signinMessage) {
                     self.signinMessage = data.signinMessage[0];
                 }
-                debugger;
+
                 if (data.signupMessage) {
                     self.signupMessage = data.signupMessage[0];
                 }
