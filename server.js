@@ -28,8 +28,6 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
-app.set('view engine', 'jade');
-
 // required for passport
 
 app.use(session({ secret: sessionSecret }));
