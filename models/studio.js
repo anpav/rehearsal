@@ -1,3 +1,5 @@
+/*jslint node: true */
+
 var mongoose = require('mongoose');
 
 var studioSchema = mongoose.Schema({

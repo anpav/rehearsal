@@ -1,6 +1,9 @@
+/*jslint node: true */
+
 var Studio = require('../models/studio');
 
 module.exports = function (app, passport) {
+    "use strict";
 
     // API
 

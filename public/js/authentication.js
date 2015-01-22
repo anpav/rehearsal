@@ -1,4 +1,8 @@
+/*jslint */
+
 (function () {
+    "use strict";
+
     var authenticationApp = angular.module('authenticationApp', []);
 
     authenticationApp.controller('AuthenticationController', function ($http) {

@@ -1,3 +1,5 @@
+/*jslint node: true */
+
 // set up
 
 var express = require('express');
@@ -23,7 +25,10 @@ require('./config/passport.js')(passport);
 
 // express application configuration
 
+/*jslint nomen: true*/
 app.use(express.static(__dirname + '/public'));
+/*jslint nomen: false*/
+
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());

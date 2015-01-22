@@ -1,8 +1,10 @@
+/*jslint node: true */
+
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user.js');
 
 module.exports = function (passport) {
-
+    "use strict";
     passport.serializeUser(function (user, done) {
         done(null, user.id);
     });

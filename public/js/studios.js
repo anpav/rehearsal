@@ -1,4 +1,8 @@
+/*jslint */
+
 (function () {
+    "use strict";
+
     var studiosApp = angular.module('studiosApp', []);
 
     studiosApp.controller('StudiosController', function($http) {
