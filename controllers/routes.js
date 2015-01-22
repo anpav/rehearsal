@@ -56,6 +56,14 @@ module.exports = function (app, passport) {
         res.json(req.isAuthenticated());
     });
 
+    app.get('/api/user-info', function (req, res) {
+        if (req.isAuthenticated()) {
+            res.json(req.user.local.email);
+        } else {
+            res.send(401);
+        }
+    });
+
     // UI Routes
 
     app.get('/', function (req, res) {
