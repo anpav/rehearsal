@@ -1,11 +1,12 @@
 /*jslint */
+/*global angular */
 
 (function () {
     "use strict";
 
     var studiosApp = angular.module('studiosApp', []);
 
-    studiosApp.controller('StudiosController', function($http) {
+    studiosApp.controller('StudiosController', function ($http) {
         var self = this;
 
         self.studios = [];
@@ -31,7 +32,7 @@
             self.newStudio = {};
         };
 
-        self.deleteStudio = function(id) {
+        self.deleteStudio = function (id) {
             $http.delete('/api/studios/' + id)
                 .success(function (data) {
                     self.studios = data;
@@ -55,4 +56,4 @@
             return self.tab === tabNumber;
         };
     });
-})();
+}());

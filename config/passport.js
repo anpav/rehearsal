@@ -20,7 +20,6 @@ module.exports = function (passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, function (req, email, password, done) {
-        console.log("asdfsdfg");
         process.nextTick(function () {
             User.findOne({ 'local.email': email }, function (err, user) {
 
@@ -31,20 +30,20 @@ module.exports = function (passport) {
                 if (user) {
                     req.flash(); // clear messages
                     return done(null, false, req.flash('signupMessage', 'That email is already taken.')); // set message
-                } else {
-                    var newUser = new User();
-
-                    newUser.local.email = email;
-                    newUser.local.password = newUser.generateHash(password);
-
-                    newUser.save(function (err) {
-                        if (err) {
-                            throw err;
-                        }
-
-                        return done(null, newUser);
-                    });
                 }
+
+                var newUser = new User();
+
+                newUser.local.email = email;
+                newUser.local.password = newUser.generateHash(password);
+
+                newUser.save(function (err) {
+                    if (err) {
+                        throw err;
+                    }
+
+                    return done(null, newUser);
+                });
             });
         });
     }));
