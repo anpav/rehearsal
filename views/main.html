@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="studiosApp">
+<html ng-app="rehearsalApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Rehearsal</title>
@@ -9,18 +9,13 @@
     <script src="./lib/bootstrap/bootstrap.min.js"></script>
     <script src="./lib/angular/angular.min.js"></script>
     <script src="./lib/angular/angular-route.min.js"></script>
-    <script src="./js/studios.js"></script>
+    <script src="./js/app.module.js"></script>
+    <script src="./js/home/controllers/studios.controller.js"></script>
+    <script src="./js/home/controllers/tabs.controller.js"></script>
+    <script src="./js/common/directives/header.directive.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">Rehearsal</a>
-            <div class="navbar-right">
-                <a href="/sign-in" class="btn navbar-top-buffer">Sign in</a>
-                <a href="/sign-up" class="btn btn-success navbar-top-buffer">Create free account</a>
-            </div>
-        </div>
-    </div>
+    <div header></div>
     <div class="container" ng-controller="StudiosController as studiosCtrl">
         <div class="jumbotron">
             <h1>Hello, this is <strong>Rehearsal</strong>.</h1>
