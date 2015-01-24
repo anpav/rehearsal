@@ -81,7 +81,9 @@ module.exports = function (app, passport) {
 
     app.get('/api/user-info', function (req, res) {
         if (req.isAuthenticated()) {
-            res.json(req.user.local.email);
+            res.json({
+                email: req.user.local.email
+            });
         } else {
             res.send(401);
         }
