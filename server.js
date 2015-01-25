@@ -27,6 +27,8 @@ require('./config/passport.js')(passport);
 
 /*jslint nomen: true*/
 app.use(express.static(__dirname + '/public'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
 /*jslint nomen: false*/
 
 app.use(morgan('dev'));
